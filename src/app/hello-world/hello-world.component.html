@@ -1,5 +1,12 @@
 <p>{{otsikko}}</p>
-<button mat-fab extended>
-<p>selkeehomma</p>
-  </button>
+<button mat-fab extended (click)="onbuttonClicked()">Vaihda kuva</button>
 
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label></mat-label>
+    <input matInput placeholder="" value="" >
+  </mat-form-field>
+
+  <img alt="item" [src]="itemImageurl">
+ 
+ 

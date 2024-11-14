@@ -1,0 +1,8 @@
+<p>feedback works!</p>
+<div *ngFor="let question of questions">
+  <h3>{{ question.questionText }}</h3>
+  <mat-slider min="0" max="2" step="1" thumbLabel (input)="onInputChange($event, question)">
+    <input matSliderThumb />
+  </mat-slider>
+  <p>{{ question.answer }}</p>
+</div>

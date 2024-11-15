@@ -6,11 +6,13 @@ import { MatSliderModule } from '@angular/material/slider';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { AppComponent } from './app.component';
 
+
 export const routes: Routes = [
-    {path: 'hello', component:HelloWorldComponent},  
+    { path: 'hello', component:HelloWorldComponent},  
     { path: 'calculator', component:CalculatorComponent},
-    {path: 'feedback', component:FeedbackComponent},
+    { path: 'feedback', component:FeedbackComponent},
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'feedback', component: FeedbackComponent },
+    { path: 'calculator', component: CalculatorComponent },
     { path: '**', component: PageNotFoundComponent},
-    
-    
 ];

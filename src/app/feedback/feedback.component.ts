@@ -18,7 +18,6 @@ export class FeedbackComponent {
   ];
 
   onInputChange(event: Event, question: Question): void {
-    // Käytetään tyyppimuunnosta `HTMLInputElement`-elementtiin
     const inputElement = event.target as HTMLElement;
     const value = Number(inputElement.getAttribute('aria-valuenow')) ?? 0;
     question.setFeedback(value);

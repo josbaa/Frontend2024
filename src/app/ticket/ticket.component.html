@@ -1,0 +1,68 @@
+<div class="container">
+    <h1>Maatalousnäyttelyn 2025 liput</h1>
+    <div class="ticket-section">
+      <div>
+        <label>Peruslippu: </label>
+        <button (click)="updateTicketCount('basic', -1)">-</button>
+        <span>{{ ticketCounts.basic }}</span>
+        <button (click)="updateTicketCount('basic', 1)">+</button>
+      </div>
+      <div>
+        <label>Opiskelijalippu: </label>
+        <button (click)="updateTicketCount('student', -1)">-</button>
+        <span>{{ ticketCounts.student }}</span>
+        <button (click)="updateTicketCount('student', 1)">+</button>
+      </div>
+      <div>
+        <label>Eläkeläisen lippu: </label>
+        <button (click)="updateTicketCount('senior', -1)">-</button>
+        <span>{{ ticketCounts.senior }}</span>
+        <button (click)="updateTicketCount('senior', 1)">+</button>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" [(ngModel)]="isMtkMember" /> MTK:n jäsen
+        </label>
+      </div>
+      <div>
+        <label>Yhteensä: {{ calculateTotalPrice() }} €</label>
+      </div>
+    </div>
+  
+    <div class="form-section">
+      <h2>Täytä tilaajan tiedot</h2>
+      <form (ngSubmit)="submitOrder()" #orderForm="ngForm">
+        <div>
+          <label>Etunimi*</label>
+          <input
+            type="text"
+            [(ngModel)]="buyerInfo.firstName"
+            name="firstName"
+            required
+            minlength="2"
+          />
+        </div>
+        <div>
+          <label>Sukunimi*</label>
+          <input
+            type="text"
+            [(ngModel)]="buyerInfo.lastName"
+            name="lastName"
+            required
+            minlength="2"
+          />
+        </div>
+        <div>
+          <label>Sähköposti*</label>
+          <input
+            type="email"
+            [(ngModel)]="buyerInfo.email"
+            name="email"
+            required
+          />
+        </div>
+        <button type="submit" [disabled]="!orderForm.valid">OSTA LIPUT</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,25 @@
+<div class="feedback-container">
+    <h2>Palaute</h2>
+  
+    
+    <div *ngFor="let question of questions" class="question-section">
+      <p><strong>{{ question.questionText }}</strong></p>
+  
+      
+      <mat-slider>
+        <input
+          matSliderThumb
+          [min]="0"
+          [max]="4"
+          [step]="1"
+          [value]="question.answer"
+          (input)="onInputChange($event, question)">
+      </mat-slider>
+  
+      
+      <p>Arviosi: <em>{{ question.getFeedbackText() }}</em></p>
+    </div>
+  
+    
+    <button mat-raised-button color="primary" (click)="submitFeedback()">Lähetä palaute</button>
+  </div>

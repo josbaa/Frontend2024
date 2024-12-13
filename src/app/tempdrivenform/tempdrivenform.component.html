@@ -1,0 +1,161 @@
+<div class="container">
+    <h2>Registration Form</h2>
+    <form #registrationForm="ngForm" (ngSubmit)="onSubmit()">
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First name*</label>
+        <input
+          id="firstName"
+          type="text"
+          class="form-control"
+          name="firstName"
+          [(ngModel)]="person.firstName"
+          required
+          minlength="2"
+          pattern="^[a-zA-Z ]*$"
+          #firstName="ngModel"
+        />
+        <div class="error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+          <span *ngIf="firstName.errors?.['required']">First name is required.</span>
+          <span *ngIf="firstName.errors?.['minlength']">Must be at least 2 characters.</span>
+          <span *ngIf="firstName.errors?.['pattern']">Only letters are allowed.</span>
+        </div>
+      </div>
+  
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last name*</label>
+        <input
+          id="lastName"
+          type="text"
+          class="form-control"
+          name="lastName"
+          [(ngModel)]="person.lastName"
+          required
+          minlength="2"
+          pattern="^[a-zA-Z ]*$"
+          #lastName="ngModel"
+        />
+        <div class="error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+          <span *ngIf="lastName.errors?.['required']">Last name is required.</span>
+          <span *ngIf="lastName.errors?.['minlength']">Must be at least 2 characters.</span>
+          <span *ngIf="lastName.errors?.['pattern']">Only letters are allowed.</span>
+        </div>
+      </div>
+  
+      <!-- Person ID -->
+      <div class="form-group">
+        <label for="personId">Person ID*</label>
+        <input
+          id="personId"
+          type="text"
+          class="form-control"
+          name="personId"
+          [(ngModel)]="person.personId"
+          required
+          pattern="^\d{6}[-+A]\d{3}[0-9A-FHJ-NPR-Y]$"
+          #personId="ngModel"
+        />
+        <div class="error" *ngIf="personId.invalid && (personId.dirty || personId.touched)">
+          <span *ngIf="personId.errors?.['required']">Person ID is required.</span>
+          <span *ngIf="personId.errors?.['pattern']">Invalid Person ID format.</span>
+        </div>
+      </div>
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="person.email"
+          required
+          #email="ngModel"
+        />
+        <div class="error" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <span *ngIf="email.errors?.['required']">Email is required.</span>
+          <span *ngIf="email.errors?.['email']">Enter a valid email address.</span>
+        </div>
+      </div>
+  
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username">Username*</label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="person.username"
+          required
+          minlength="6"
+          #username="ngModel"
+        />
+        <div class="error" *ngIf="username.invalid && (username.dirty || username.touched)">
+          <span *ngIf="username.errors?.['required']">Username is required.</span>
+          <span *ngIf="username.errors?.['minlength']">Must be at least 6 characters.</span>
+        </div>
+      </div>
+  
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password*</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="person.password"
+          required
+          minlength="10"
+          pattern="^(?=.*[A-Z])(?=.*\d).+$"
+          #password="ngModel"
+        />
+        <div class="error" *ngIf="password.invalid && (password.dirty || password.touched)">
+          <span *ngIf="password.errors?.['required']">Password is required.</span>
+          <span *ngIf="password.errors?.['minlength']">Must be at least 10 characters.</span>
+          <span *ngIf="password.errors?.['pattern']">
+            Password must include an uppercase letter and a number.
+          </span>
+        </div>
+      </div>
+  
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password*</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          class="form-control"
+          name="confirmPassword"
+          [(ngModel)]="person.confirmPassword"
+          required
+          #confirmPassword="ngModel"
+        />
+        <div class="error" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+          <span *ngIf="confirmPassword.errors?.['required']">Confirm Password is required.</span>
+        </div>
+        <div class="error" *ngIf="person.password !== person.confirmPassword && confirmPassword.dirty">
+          Passwords do not match.
+        </div>
+      </div>
+  
+      <!-- Terms and Conditions -->
+      <div class="form-group">
+        <label>
+          <input type="checkbox" name="termsAccepted" [(ngModel)]="person.termsAccepted" required />
+          Accept terms and conditions
+        </label>
+      </div>
+  
+      <!-- Submit Button -->
+      <div>
+        <button type="submit" class="submit-button" [disabled]="registrationForm.invalid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+  

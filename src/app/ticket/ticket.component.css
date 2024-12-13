@@ -1,0 +1,25 @@
+
+.container {
+    margin: 20px;
+  }
+  
+  div {
+    margin-bottom: 5px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+
+  button {
+    background: lightblue;
+    border: none;
+    padding: 5px 10px;
+  }
+  
+  button:hover {
+    background: #b0d4ff;
+  }
+  
